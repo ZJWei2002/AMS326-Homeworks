@@ -1,9 +1,6 @@
 import math
 import random
 
-
-# 1
-
 def f(x):
     return math.exp(-x ** 3) - x ** 4 - math.sin(x)
 
@@ -73,7 +70,7 @@ def secant(fun  = f, x0 = -1, x1 = 1, tol = 5e-5, max = 100):
         x1 = x2
     raise RuntimeError
 
-def monte_carlo(fun = f, a = 0.5, b = 0.75, tol = 5e-5, max = 10000):
+def monte_carlo(fun = f, a = 0.5, b = 0.75, tol = 5e-5, max = 1000):
     i = 0 # counter for iterations
     f = 0 # counter for flops
     while i < max:
@@ -83,12 +80,4 @@ def monte_carlo(fun = f, a = 0.5, b = 0.75, tol = 5e-5, max = 10000):
         f += 6
         if abs(fun(x)) < tol:
             return x, i, f
-    raise RuntimeError
-
-root, iters, flops = bisection()
-print(f"root: {root}, number of iterations: {iters}, number of flops: {flops}")
-
-
-
-# 2
-
+    raise RuntimeError("number of iteration exceeds maximum.")
